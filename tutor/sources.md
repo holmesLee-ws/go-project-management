@@ -10,7 +10,9 @@
 - 금액 기준, 기한(일수), 비율, 대상 규모
 - 기준·방법론의 현행 판과 구조(예: PMBOK Guide 몇 판, PRINCE2 원칙 수)
 
-커리큘럼의 「국내 근거」·「글로벌 비교」 칸은 출발점일 뿐이다. 칸에 적힌 조문도 세션에서 처음 말할 때 다시 확인한다. 「확인 시점」은 [curriculum/map.md](../curriculum/map.md)의 출처 절에 있다.
+커리큘럼의 「국내 근거」 칸은 출발점일 뿐이다. 칸에 적힌 조문도 세션에서 처음 말할 때 다시 확인한다. 「확인 시점」은 [curriculum/map.md](../curriculum/map.md)의 출처 절에 있다.
+
+원문이 유료인 국제 표준(PMBOK Guide, PRINCE2, ISO)과 자동 조회를 막는 사이트(pmi.org, iso.org)는 예외다. 판·연도·구조는 출처 절의 확인일을 근거로 「(출처 절 확인일) 기준」이라고 말하고, 학습자가 더 새 판을 말하는 등 의심이 생길 때만 다시 찾아본다.
 
 ## 어디서 확인하는가
 
@@ -18,7 +20,7 @@
 
 | 대상 | 출처 |
 |---|---|
-| 법률·시행령·시행규칙 | 국가법령정보센터 law.go.kr. 접속이 안 되면 국회 법률정보시스템 likms.assembly.go.kr(커리큘럼 출처 절의 likms 링크가 그 법령의 현행 본문이다) |
+| 법률·시행령·시행규칙 | 국가법령정보센터 law.go.kr. 접속이 안 되면 국회 법률정보시스템 likms.assembly.go.kr — 커리큘럼 출처 절의 「본문」 링크를 WebFetch로 읽는다(`basicDt`에 오늘 날짜 `YYYYMMDD`). 긴 법령은 뒷부분이 요약되므로, 찾는 조를 지정해 묻고 「그 조가 없다」는 요약 결과로 조문이 없다고 결론 내리지 않는다 |
 | 고시·훈령·지침(행정규칙) | law.go.kr 행정규칙, 또는 소관 부처 누리집(과학기술정보통신부·행정안전부·국토교통부·기획재정부·공정거래위원회·조달청) |
 | 공공 SW사업 가이드 | 과학기술정보통신부·정보통신산업진흥원(NIPA)·한국지능정보사회진흥원(NIA)·한국소프트웨어산업협회(KOSA) 원문 |
 | 글로벌 기준 | 원 기준 기관(PMI, PeopleCert/AXELOS, ISO, scrumguides.org, FIDIC, acquisition.gov, gov.uk) |
@@ -41,4 +43,4 @@
 
 ## 기록
 
-확인한 출처는 `learner/state.json`의 `sources_checked`에 `{ref, url, at}`으로 남긴다(`ref`는 「법령명 + 조 번호」, `at`은 확인한 날짜). 같은 세션에서 이미 확인한 `ref`는 다시 조회하지 않는다. 새 세션에서는 다시 확인한다.
+세션을 시작할 때 `current.session_started`에 시작 시각(`YYYY-MM-DDTHH:MM`)을 적는다. 확인한 출처는 `learner/state.json`의 `sources_checked`에 `{ref, url, at}`으로 남긴다(`ref`는 「법령명 + 조 번호」, `at`은 확인 시각). `at`이 이번 `session_started`보다 뒤인 `ref`는 다시 조회하지 않는다. 그보다 앞이면 다시 확인한다.

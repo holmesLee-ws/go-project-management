@@ -98,6 +98,15 @@ function main() {
     if (statSync(join(root, ".claude/skills", s)).isDirectory() && !existsSync(join(root, ".claude/skills", s, "SKILL.md"))) errors.push(`스킬 ${s}: SKILL.md 없음`);
   }
   if (!read(".gitignore").split("\n").includes("learner/")) errors.push(".gitignore에 learner/ 없음");
+  // 학습자 산출물 경로 일치: 규칙·설정이 같은 폴더를 가리켜야 권한 창 없이 쓴다.
+  const settings = read(".claude/settings.json");
+  for (const dir of ["learner/work", "learner/studio"]) {
+    if (!settings.includes(`Edit(/${dir}/`)) errors.push(`settings.json 허용 목록에 ${dir} 없음`);
+    if (!read("CLAUDE.md").includes(`${dir}/`)) errors.push(`CLAUDE.md에 ${dir}/ 없음`);
+  }
+  for (const f of ["CLAUDE.md", "README.md", ...readdirSync(join(root, "tutor")).map((x) => `tutor/${x}`)]) {
+    if (/learner\/lab\b/.test(read(f))) errors.push(`${f}: 쓰지 않는 경로 learner/lab`);
+  }
 
   if (errors.length) { console.error(errors.map((e) => `FAIL ${e}`).join("\n")); process.exit(1); }
   console.log(`OK 모듈 ${modules.size}개, 파일 ${files.length}개 검사`);

@@ -13,7 +13,8 @@
   "current": {
     "module": null,
     "path": null,
-    "pending_probe": null
+    "pending_probe": null,
+    "session_started": null
   },
   "modules": {},
   "gaps": [],
