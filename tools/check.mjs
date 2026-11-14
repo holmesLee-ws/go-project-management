@@ -119,10 +119,18 @@ function main() {
       else if (!allowedDirs.has(seg)) errors.push(`${f}: learner/${seg}/가 settings 허용 목록에 없음`);
     }
   }
+  // 열거값: pace.read와 status가 규칙·스킬에서 같은 이름이어야 한다.
+  const paceVals = ["flow", "too_fast", "needs_more", "bored_or_ready", "stuck"];
+  for (const v of paceVals) for (const f of ["tutor/pacing.md", ".claude/skills/pace/SKILL.md"]) if (f.endsWith("pacing.md") && !read(f).includes(`\`${v}\``)) errors.push(`${f}: pace 값 ${v} 없음`);
+  for (const m of read(".claude/skills/pace/SKILL.md").matchAll(/`([a-z_]+)`/g)) if (!paceVals.includes(m[1]) && !["pace"].includes(m[1])) errors.push(`pace 스킬의 모르는 값 ${m[1]}`);
+  const statusVals = ["estimated", "inferred", "in_progress", "done", "verified_skip", "self_skip"];
+  for (const v of statusVals) if (!read("tutor/assessment.md").includes(`\`${v}\``)) errors.push(`assessment.md: status 값 ${v} 없음`);
+  // 여는 명령 허용 경로는 studio를 가리켜야 한다.
+  for (const m of settings.matchAll(/"(?:Bash|PowerShell)\((?:open|xdg-open|start ""|Start-Process) ([^)*]+)\*/g)) if (m[1] !== "learner/studio/") errors.push(`settings 여는 명령 경로 ${m[1]}가 learner/studio/가 아님`);
   // 양식의 상태 키는 규칙에서 쓰여야 한다(이름이 바뀌면 튜터가 다른 키를 쓴다).
   const rules = [claude, ...tutorFiles.map(read)].join("\n");
   const tpl = JSON.parse(read("learner-template/state.json"));
-  for (const k of [...Object.keys(tpl.current), "sources_checked", "gaps", "pace", "preferences"]) if (!new RegExp(`\\b${k}\\b`).test(rules)) errors.push(`양식 키 ${k}를 튜터 규칙이 쓰지 않음`);
+  for (const k of [...Object.keys(tpl.current), ...Object.keys(tpl.learner).filter((k) => k !== "language" && k !== "name"), ...Object.keys(tpl.pace), "sources_checked", "gaps", "preferences"]) if (!new RegExp(`\\b${k}\\b`).test(rules)) errors.push(`양식 키 ${k}를 튜터 규칙이 쓰지 않음`);
 
   if (errors.length) { console.error(errors.map((e) => `FAIL ${e}`).join("\n")); process.exit(1); }
   console.log(`OK 모듈 ${modules.size}개, 파일 ${files.length}개 검사`);

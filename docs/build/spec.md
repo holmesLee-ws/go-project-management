@@ -85,6 +85,7 @@
 - **G1 종료 조건**: law.go.kr 본문을 WebFetch로 읽을 수 있는 URL 형식을 점검 종료 뒤 실측해 이 절과 `tutor/sources.md`에 적는다. 읽을 수 없으면 국회 법률정보시스템 또는 법령 원문 PDF·부처 게시 원문을 1차 경로로 정하고 같은 곳에 적는다. 둘 다 안 되면 R11의 세션 중 재확인은 「확인 못 했다고 말하고 숫자 없이 진행」으로만 충족되므로 디스패처에 보고한다.
 
 - 2026-11-14 실측(Claude Code 2.1.325): 신뢰 대화상자를 수락하지 않은 폴더에서는 `claude -p`도 프로젝트 `permissions.allow`를 무시하고(「Ignoring 10 permissions.allow entries … this workspace has not been trusted」), `learner/state.json` 쓰기가 거부됐다. 부모 폴더를 신뢰해도 하위 클론에는 이어지지 않았다. 그래서 G3는 클론마다 대화형 실행으로 신뢰 대화상자를 수락한 뒤(학습자의 첫 실행과 같다) `-p`로 돌린다. 문서(code.claude.com/docs/en/permissions, 2026-11-14 G2 리뷰어 확인)의 「-p는 신뢰를 수락한 것으로 처리」 서술과 다르며, 실측을 따른다.
+- 2026-11-14 양성 실측(G2 리뷰어, 2.1.325, 신뢰 수락 뒤 `--permission-mode default`): `learner/state.json`, `learner/studio/<모듈>/…html`, `learner/work/…md` 쓰기와 `open`·`xdg-open learner/studio/…html`이 권한 창 없이 통과했고, 바깥 파일 쓰기와 `..` 경로 열기는 거부됐다. G3 자동화는 클론마다 `expect`로 대화형 실행의 신뢰 대화상자를 수락한다.
 - 2026-11-14 문서 재확인(G2 리뷰어, code.claude.com/docs/en/permission-modes): 대화형 터미널은 v2.1.283부터 기본 시작 모드가 `auto`, `claude -p`는 v2.1.302부터 `default`다. auto 모드는 작업 폴더 안 편집을 자동 승인하므로, 허용 목록 자체는 `default` 모드에서 시험한다.
 
 ### G4에서 실측할 가설

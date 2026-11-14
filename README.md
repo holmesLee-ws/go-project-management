@@ -22,7 +22,7 @@ cd ~/Desktop/go-project-management
 claude
 ```
 
-처음 열면 이 폴더를 신뢰하는지 묻습니다. 기본 선택은 「No, exit」이므로 Enter만 누르면 종료됩니다. **아래 화살표로 「Yes, I trust this folder」를 고른 뒤 Enter**를 누르세요. 그래야 학습 기록 저장과 자료 조사를 튜터가 묻지 않고 진행합니다.
+처음 열면 이 폴더를 신뢰하는지 묻습니다. 기본 선택은 「No, exit」이므로 Enter만 누르면 종료됩니다. **아래 화살표로 「Yes, I trust this folder」를 고른 뒤 Enter**를 누르세요. 이때 이 폴더가 도구 권한 몇 가지를 미리 허용한다는 안내와 목록이 함께 뜨는데, 아래 「튜터가 쓰는 권한」에 적은 것들이므로 정상입니다. 그래야 학습 기록 저장과 자료 조사를 튜터가 묻지 않고 진행합니다.
 
 **Claude Desktop**
 
