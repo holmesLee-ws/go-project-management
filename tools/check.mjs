@@ -49,6 +49,7 @@ function parseCurriculum(text) {
       if (!v) continue;
       const keys = [...v.matchAll(KEY)].map((k) => k[1]);
       if (name === "글로벌 비교" && keys.length === 0) problems.push(`${id}: 글로벌 비교에 출처 키 없음`);
+      if (name === "국내 근거" && v.startsWith("직접 규정 없음") && !v.startsWith("직접 규정 없음 — 실무 연결: ")) problems.push(`${id}: 「직접 규정 없음 — 실무 연결: …」 형식으로 이유를 쓴다`);
       if (name === "국내 근거" && keys.length === 0 && !v.startsWith("직접 규정 없음")) problems.push(`${id}: 국내 근거에 출처 키 없음(규정이 없으면 「직접 규정 없음 — 실무 연결: …」)`);
       for (const k of keys) { used.add(k); if (!sources.has(k)) problems.push(`${id}: 출처 절에 없는 키 ${k}`); }
     }
@@ -104,9 +105,24 @@ function main() {
     if (!settings.includes(`Edit(/${dir}/`)) errors.push(`settings.json 허용 목록에 ${dir} 없음`);
     if (!read("CLAUDE.md").includes(`${dir}/`)) errors.push(`CLAUDE.md에 ${dir}/ 없음`);
   }
-  for (const f of ["CLAUDE.md", "README.md", ...readdirSync(join(root, "tutor")).map((x) => `tutor/${x}`)]) {
-    if (/learner\/lab\b/.test(read(f))) errors.push(`${f}: 쓰지 않는 경로 learner/lab`);
+  const tutorFiles = readdirSync(join(root, "tutor")).filter((x) => x.endsWith(".md")).map((x) => `tutor/${x}`);
+  const skillFiles = readdirSync(join(root, ".claude/skills")).map((x) => `.claude/skills/${x}/SKILL.md`).filter((x) => existsSync(join(root, x)));
+  const claude = read("CLAUDE.md");
+  for (const f of tutorFiles) if (!claude.includes(`@${f}`)) errors.push(`CLAUDE.md가 ${f}를 @로 불러오지 않음`);
+  // 규칙·스킬이 쓰는 learner/ 하위 폴더는 settings 허용 목록에 있어야 한다.
+  const allowedDirs = new Set([...settings.matchAll(/Edit\(\/learner\/([a-z]+)\//g)].map((m) => m[1]));
+  const allowedFiles = new Set([...settings.matchAll(/Edit\(\/learner\/([a-z.]+)\)/g)].map((m) => m[1]));
+  for (const f of ["CLAUDE.md", "README.md", ...tutorFiles, ...skillFiles]) {
+    for (const m of read(f).matchAll(/learner\/([A-Za-z0-9_.-]+)/g)) {
+      const seg = m[1];
+      if (seg.includes(".")) { if (!allowedFiles.has(seg)) errors.push(`${f}: learner/${seg}가 settings 허용 목록에 없음`); }
+      else if (!allowedDirs.has(seg)) errors.push(`${f}: learner/${seg}/가 settings 허용 목록에 없음`);
+    }
   }
+  // 양식의 상태 키는 규칙에서 쓰여야 한다(이름이 바뀌면 튜터가 다른 키를 쓴다).
+  const rules = [claude, ...tutorFiles.map(read)].join("\n");
+  const tpl = JSON.parse(read("learner-template/state.json"));
+  for (const k of [...Object.keys(tpl.current), "sources_checked", "gaps", "pace", "preferences"]) if (!new RegExp(`\\b${k}\\b`).test(rules)) errors.push(`양식 키 ${k}를 튜터 규칙이 쓰지 않음`);
 
   if (errors.length) { console.error(errors.map((e) => `FAIL ${e}`).join("\n")); process.exit(1); }
   console.log(`OK 모듈 ${modules.size}개, 파일 ${files.length}개 검사`);

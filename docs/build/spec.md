@@ -84,6 +84,9 @@
 - 2026-11-14 실측(law.go.kr 점검 중): `claude -p`의 WebFetch로 국회 법률정보시스템 본문 주소(`lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=…&contSid=…&basicDt=YYYYMMDD&cachePreid=ALL&viewGb=PROM`)를 읽어 국가계약법 제14조제1항 문장을 원문대로 받았다. 상세 화면 주소는 본문 자리에 「로딩중」만 준다. 긴 법령은 약 4만 자 뒤가 자동 요약돼, 뒷부분 조문은 「없다」고 잘못 요약될 수 있다. `contSid`는 상세 화면의 본문 호출(시행일이 도래한 최근 공포본)에서 얻은 값을 출처 절에 적었다. curl은 브라우저 User-Agent가 없으면 HTTP 400이다.
 - **G1 종료 조건**: law.go.kr 본문을 WebFetch로 읽을 수 있는 URL 형식을 점검 종료 뒤 실측해 이 절과 `tutor/sources.md`에 적는다. 읽을 수 없으면 국회 법률정보시스템 또는 법령 원문 PDF·부처 게시 원문을 1차 경로로 정하고 같은 곳에 적는다. 둘 다 안 되면 R11의 세션 중 재확인은 「확인 못 했다고 말하고 숫자 없이 진행」으로만 충족되므로 디스패처에 보고한다.
 
+- 2026-11-14 실측(Claude Code 2.1.325): 신뢰 대화상자를 수락하지 않은 폴더에서는 `claude -p`도 프로젝트 `permissions.allow`를 무시하고(「Ignoring 10 permissions.allow entries … this workspace has not been trusted」), `learner/state.json` 쓰기가 거부됐다. 부모 폴더를 신뢰해도 하위 클론에는 이어지지 않았다. 그래서 G3는 클론마다 대화형 실행으로 신뢰 대화상자를 수락한 뒤(학습자의 첫 실행과 같다) `-p`로 돌린다. 문서(code.claude.com/docs/en/permissions, 2026-11-14 G2 리뷰어 확인)의 「-p는 신뢰를 수락한 것으로 처리」 서술과 다르며, 실측을 따른다.
+- 2026-11-14 문서 재확인(G2 리뷰어, code.claude.com/docs/en/permission-modes): 대화형 터미널은 v2.1.283부터 기본 시작 모드가 `auto`, `claude -p`는 v2.1.302부터 `default`다. auto 모드는 작업 폴더 안 편집을 자동 승인하므로, 허용 목록 자체는 `default` 모드에서 시험한다.
+
 ### G4에서 실측할 가설
 
 - WebSearch·WebFetch가 허용 목록에 도메인 제한 없이 있으므로 법령 확인에 권한 창이 뜨지 않는다.
@@ -119,5 +122,5 @@
 
 GitHub 원격에서 새로 클론한 사본으로 아래를 본다.
 
-1. CLI: `claude`를 프로젝트 설정만으로 대화형 실행해 첫 메시지 「안녕」을 보낸다. 합격: 권한 창 0회로 첫 질문이 나오고, 진단 뒤 `learner/state.json`과 HTML이 생기고 열린다.
+1. CLI: `claude --permission-mode default`를 프로젝트 설정만으로 대화형 실행해(auto 모드가 허용 목록 판정을 가리지 않도록) 신뢰 대화상자를 수락하고 첫 메시지 「안녕」을 보낸다. 합격: 권한 창 0회로 첫 질문이 나오고, 진단 뒤 `learner/state.json`과 HTML이 생기고 열린다. 기본 모드(auto)로도 한 번 실행해 학습자가 실제로 겪는 흐름을 본다.
 2. Desktop: Claude Desktop의 Code 탭에서 같은 클론을 열고 「안녕」을 보낸다. 조작할 수 없으면 **R3의 Desktop 절반은 미충족**으로 최종 보고 첫머리에 적고, 사람이 1분 안에 확인할 절차를 함께 준다.

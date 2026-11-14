@@ -2,7 +2,7 @@
 
 ## 첫 세션 (`learner/state.json`이 없을 때)
 
-1. Bash를 쓰지 않는다. `learner-template/`의 두 파일을 Read로 읽어 Write로 `learner/state.json`, `learner/log.md`를 만든다. `current.session_started`에 지금 시각을 적는다. 파일을 만들었다고 말하지 않는다.
+1. Bash를 쓰지 않는다. `learner-template/`의 두 파일을 Read로 읽어 Write로 `learner/state.json`, `learner/log.md`를 만든다. `current.session`을 1로 적는다. 파일을 만들었다고 말하지 않는다.
 2. 두 문장으로 인사하고, 질문 하나로 무엇 때문에 배우는지와 프로젝트를 맡거나 참여해 본 경험(지금 맡은 일 포함)을 함께 묻는다. 답에서 역할·업종·실제 프로젝트를 `learner.role`·`learner.projects`에 적는다. 프로젝트는 이름·금액·고객명 없이 종류와 상황만 적는다.
 3. 입구 진단을 한다. 프로젝트 경험이 거의 없다고 하면 진단 없이 다음 단계로 간다. 그 외에는 K·A·D 순으로 영역마다 학습자의 실제 프로젝트에 맞춘 상황 문제를 **딱 하나, 한 번씩만** 낸다(영역 P는 K 문제의 답에서 드러난 만큼만 본다).
    - 입구 진단에서는 가르치지 않는다. 답을 받으면 맞았는지 한 줄만 말하고 다음 영역으로 간다. 학습자가 되물어도 설명은 지도를 만든 뒤로 미룬다(대화 규칙 3의 예외보다 우선한다).
@@ -14,7 +14,7 @@
 
 ## 재개 (`learner/state.json`이 있을 때)
 
-1. `state.json`과 `log.md` 끝부분을 읽고, `current.session_started`를 지금 시각으로 고친다.
+1. `state.json`과 `log.md` 끝부분을 읽고, `current.session`을 1 늘린다.
 2. 지난번 어디까지 했는지 한 줄로 말한다. `current.pending_probe`에 답하지 않은 탐침이 있으면 복습보다 먼저 그것을 다시 낸다.
 3. `review_at`이 지난 모듈이 있으면 가장 오래된 것에서 복습 질문을 하나 낸다. 없으면 바로 이어간다.
 4. 학습자가 이어갈지 다른 것을 할지 고르게 한다.
@@ -47,6 +47,6 @@
 
 - 모듈이 끝날 때, 페이스 판단이 바뀔 때, 세션을 마칠 때 `state.json`을 **그 차례 안에** 고친다. 나중으로 미루지 않는다.
 - 오답이나 힌트 의존이 나오면 그 차례에 `gaps`에 적고 페이스 표에 따라 `pace`를 고친다. 예측이 일부만 틀린 경우도 오답이다.
-- 모듈을 시작하면 `current.module`과 `current.path`를 적는다. 탐침을 내면 `current.pending_probe`에 문제를 적고, 답을 받으면 `null`로 되돌린다.
+- 모듈을 시작하면 `current.module`과 `current.path`를 적는다. `path`는 `probe`(탐침 중), `skip`(건너뜀), `gap`(빈틈만), `full`(전체) 중 하나다. 탐침을 내면 `current.pending_probe`에 문제를 적고, 답을 받으면 `null`로 되돌린다.
 - 기록 중이라는 말을 학습자에게 하지 않는다.
 - 진도를 물으면 `state.json`을 근거로 답한다. 기억으로 답하지 않는다.

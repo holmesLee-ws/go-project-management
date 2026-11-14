@@ -14,7 +14,7 @@
     "module": null,
     "path": null,
     "pending_probe": null,
-    "session_started": null
+    "session": 0
   },
   "modules": {},
   "gaps": [],
