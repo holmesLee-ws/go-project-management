@@ -114,8 +114,8 @@
 - 선수: P3
 - 핵심 질문: 프로젝트를 흔들 수 있는 사람은 누구이고, 각자에게 무엇을 언제 알려야 하는가?
 - 목표: Apply — 이해관계자를 영향·관심으로 분석해 참여 전략과 보고 체계를 정한다.
-- 만들어 볼 것: 이해관계자 등록부와 보고 일정표
-- 국내 근거: 직접 규정 없음 — 실무 연결: 과업심의위원회에 사업자가 개최를 요청할 수 있다(소프트웨어 진흥법 제50조 제3항), 감리 착수·종료 회의(전자정부법 시행령 제72조 — 감리법인의 업무범위 등) [L1][L4]
+- 만들어 볼 것: 이해관계자 등록부와 보고 일정표(공공 사업이면 감리·과업심의위원회 같은 제도상 참여자 포함)
+- 국내 근거: 소프트웨어 진흥법 제50조(소프트웨어사업 과업심의위원회) 제3항 — 사업자도 개최를 요청할 수 있다, 전자정부법 시행령 제72조(감리법인의 업무범위 등) — 감리 착수·종료 회의 [L1][L4]
 - 글로벌 비교: PMBOK Guide 8판의 이해관계자 성과 영역 [G1], GovS 002 v2.1 [G18]
 - 경계·연결: 협상·설득·갈등 관리 기법은 go-leadership-negotiation
 
@@ -132,15 +132,15 @@
 - 선수: K1, K4
 - 핵심 질문: 「이것 하나만 더」를 받아들이면 무엇이 바뀌고, 누가 그것을 승인하는가?
 - 목표: Apply — 변경 요청의 범위·일정·원가 영향을 분석하고, 정해진 변경 통제 절차로 기준선을 고친다.
-- 만들어 볼 것: 실제 있었던 변경 하나의 변경 요청서와 영향 분석
-- 국내 근거: 직접 규정 없음 — 실무 연결: 공공 SW사업의 과업 변경은 과업심의위원회를 거친다(소프트웨어 진흥법 제50조). 제도 판단은 D3에서 다룬다 [L1]
+- 만들어 볼 것: 실제 있었던 변경 하나의 변경 요청서와 영향 분석(공공 SW사업이면 과업심의에 올릴지 판단까지)
+- 국내 근거: 소프트웨어 진흥법 제50조(소프트웨어사업 과업심의위원회) — 공공 SW사업의 과업 변경은 이 위원회를 거친다. 제도 판단의 깊이는 D3 [L1]
 - 글로벌 비교: PRINCE2 7의 Issues 실무(6판의 Change를 대신함) [G6], PMBOK Guide 8판 [G1]
 
 ### K10 · 성과 보고와 종료
 - 선수: K4, K6
 - 핵심 질문: 프로젝트는 언제 정말 끝난 것이고, 다음 프로젝트에 무엇을 남겨야 하는가?
 - 목표: Apply — 상태 보고서를 쓰고 종료 체크리스트·교훈을 실행 가능한 형태로 정리한다.
-- 만들어 볼 것: 한 쪽짜리 상태 보고서와 종료 체크리스트(하자담보 기간과 대응 창구 포함), 교훈 세 줄
+- 만들어 볼 것: 한 쪽짜리 상태 보고서와 종료 체크리스트(하자담보 기간과 대응 창구, 편익을 누가 언제 확인할지 포함), 교훈 세 줄
 - 국내 근거: 소프트웨어 진흥법 제60조(소프트웨어사업의 하자담보책임) [L1]
 - 글로벌 비교: PRINCE2 7의 종료 프로세스와 「경험에서 학습」 원칙 [G6], GovS 002 v2.1 [G18]
 
@@ -179,7 +179,7 @@
 - 핵심 질문: 총액으로 정할지, 단가로 정할지, 실비로 정할지에 따라 위험은 누구에게 가는가?
 - 목표: Evaluate — 총액·단가·실비정산·시간과 자재 계약의 위험 배분을 비교해 상황에 맞는 유형을 고른다.
 - 만들어 볼 것: 내 프로젝트가 공공(국가·지자체)인지 민간 도급인지 밝히고, 총액·단가·개산(실비정산) 중 맞는 유형을 고른 메모
-- 국내 근거: 민법 제664조(도급의 의의)·제665조(보수의 지급시기) [L22], 국가를 당사자로 하는 계약에 관한 법률 제21조(계속비 및 장기계속계약)·제22조(단가계약)·제23조(개산계약) [L5], 같은 법 시행령 제70조(개산계약)·제73조(사후원가검토조건부 계약) [L6]
+- 국내 근거: 민법 제664조(도급의 의의)·제665조(보수의 지급시기) [L22], 국가를 당사자로 하는 계약에 관한 법률 제22조(단가계약)·제23조(개산계약), 다년 사업의 연차 계약 위험은 제21조(계속비 및 장기계속계약) [L5], 같은 법 시행령 제70조(개산계약)·제73조(사후원가검토조건부 계약) [L6]
 - 글로벌 비교: FAR Part 16 Types of Contracts [G19], FIDIC Red Book 2017 Clause 12 — 측정·평가 [G15]
 - 경계·연결: 계약법 총론은 go-compliance-and-legal, 수주 측 가격 협상은 go-sales
 
@@ -213,7 +213,7 @@
 - 선수: D1
 - 핵심 질문: 일부를 다른 회사에 맡기면 원 수행사에게 어떤 의무가 새로 생기는가?
 - 목표: Apply — 하도급 계약의 서면·대금·검사 의무와 공공 SW사업의 하도급 제한을 프로젝트 계획에 반영한다.
-- 만들어 볼 것: 하도급 착수 전 확인 체크리스트
+- 만들어 볼 것: 하도급 착수 전 확인 체크리스트(공공 SW사업이면 하도급 승인 신청과 비율 한도, 민간이면 하도급법의 서면 발급·검사·대금 기한)
 - 국내 근거: 소프트웨어 진흥법 제51조(하도급 제한 등)·시행령 제48조 [L1][L2], 소프트웨어사업 계약 및 관리감독에 관한 지침 제19~23조 — 하도급 승인 [L13], 하도급거래 공정화에 관한 법률 제3조(서면의 발급 및 서류의 보존)·제9조(검사의 기준·방법 및 시기)·제13조(하도급대금의 지급 등) [L10], 건설산업기본법 제29조(건설공사의 하도급 제한)·제34조(하도급대금의 지급 등) [L9]
 - 글로벌 비교: FIDIC Red Book 2017 5.1 — 하도급, 5.2 — 지명 하도급자 [G15]
 - 경계·연결: 하도급법의 공정거래 규제·제재 총론은 go-compliance-and-legal, 협력사 조달 관리 일반은 go-scm
@@ -256,7 +256,7 @@
 
 ### 국내
 
-- [L1] 소프트웨어 진흥법 — 현행 법률 제20476호(시행 2025-04-23). 시행 예정: 법률 제21865호(시행 2027-02-12, 제50조 과업심의위원회 개정). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0083&contId=1987120400000006 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1987120400000006&contSid=0082&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
+- [L1] 소프트웨어 진흥법 — 현행 법률 제20476호(시행 2025-04-23). 시행 예정: 법률 제21865호(시행 2027-02-12, 제50조 과업심의위원회 개정). 본문 링크의 `contSid`는 현행본이므로 2027-02-12 뒤에는 상세 화면에서 새 값을 확인해 고친다. https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0083&contId=1987120400000006 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1987120400000006&contSid=0082&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
 - [L2] 소프트웨어 진흥법 시행령 — 대통령령 제36338호(시행 2026-06-03). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0069&contId=1988102000000001 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1988102000000001&contSid=0070&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
 - [L3] 전자정부법 — 법률 제21394호(시행 2026-08-28). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0073&contId=2001032800000003 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=2001032800000003&contSid=0072&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
 - [L4] 전자정부법 시행령 — 대통령령 제36605호(시행 2026-08-28). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0165&contId=2001063000000001 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=2001063000000001&contSid=0166&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
@@ -264,8 +264,8 @@
 - [L6] 국가를 당사자로 하는 계약에 관한 법률 시행령 — 대통령령 제36338호(시행 2026-06-03). 소관이 재정경제부로 바뀌었다. https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0343&contId=1995070600000001 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1995070600000001&contSid=0344&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
 - [L7] 건설기술 진흥법 — 법률 제21065호(시행 2025-10-01). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0137&contId=1987102400000001 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1987102400000001&contSid=0136&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
 - [L8] 건설기술 진흥법 시행령 — 대통령령 제36404호(시행 2026-06-09). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0367&contId=1989050100000001 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1989050100000001&contSid=0368&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
-- [L9] 건설산업기본법 — 법률 제21034호(시행 2025-11-27). 시행 예정: 법률 제21894호(시행 2027-01-01, 제34조·제35조 하도급대금 개정). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0187&contId=1958031100000008 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1958031100000008&contSid=0186&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
-- [L10] 하도급거래 공정화에 관한 법률 — 법률 제21857호(시행 2026-10-02). 시행 예정: 법률 제21905호(시행 2027-09-09, 여기서 쓴 조문은 바뀌지 않음). https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0122&contId=1984123100000007 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1984123100000007&contSid=0121&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
+- [L9] 건설산업기본법 — 법률 제21034호(시행 2025-11-27). 시행 예정: 법률 제21894호(시행 2027-01-01, 제34조·제35조 하도급대금 개정). 시행일 뒤 본문 링크의 `contSid` 갱신 필요. https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0187&contId=1958031100000008 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1958031100000008&contSid=0186&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
+- [L10] 하도급거래 공정화에 관한 법률 — 법률 제21857호(시행 2026-10-02). 시행 예정: 법률 제21905호(시행 2027-09-09, 여기서 쓴 조문은 바뀌지 않음). 시행일 뒤 본문 링크의 `contSid` 갱신 필요. https://likms.assembly.go.kr/law/lawsLawtInqyDetl1010.do?genActiontypeCd=2ACT1010&genDoctreattypeCd=DOCT2041&cachePreid=ALL&viewGb=PROM&contSid=0122&contId=1984123100000007 본문(WebFetch용, basicDt에 오늘 날짜): https://likms.assembly.go.kr/law/lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=1984123100000007&contSid=0121&cachePreid=ALL&viewGb=PROM&basicDt=YYYYMMDD (확인 2026-11-14)
 - [L11] 행정기관 및 공공기관 정보시스템 구축·운영 지침 — 행정안전부고시 제2025-01호. https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000016&nttId=114850 (확인 2026-11-14)
 - [L12] 정보시스템 감리 기준 — 행정안전부고시 제2024-53호. https://www.mois.go.kr/frt/bbs/type001/commonSelectBoardArticle.do?bbsId=BBSMSTR_000000000016&nttId=110444 (확인 2026-11-14)
 - [L13] 소프트웨어사업 계약 및 관리감독에 관한 지침 — 과학기술정보통신부고시 제2023-15호. 제6조가 인용하는 시행령 조문은 현행 시행령에서 옮겨졌다(지침 미반영). https://www.sw.or.kr/site/kipa/ex/board/View.do?cbIdx=326&bcIdx=61312&gubun=G (확인 2026-11-14)
@@ -302,4 +302,4 @@
 - [G17] FAR Part 46 Quality Assurance, Subpart 46.5 Acceptance(FAC 2026-01). https://www.acquisition.gov/far/part-46 (확인 2026-11-14)
 - [G19] FAR Part 16 Types of Contracts(FAC 2026-01). https://www.acquisition.gov/far/part-16 (확인 2026-11-14)
 - [G20] FAR Part 15 Contracting by Negotiation(FAC 2026-01). https://www.acquisition.gov/far/part-15 (확인 2026-11-14)
-- [G18] UK Government Functional Standard GovS 002: Project Delivery, v2.1(2025-09-17). https://www.gov.uk/government/publications/project-delivery-functional-standard (확인 2026-11-14)
+- [G18] UK Government Functional Standard GovS 002: Project Delivery, v2.1(gov.uk 갱신일 2025-09-17). https://www.gov.uk/government/publications/project-delivery-functional-standard (확인 2026-11-14)

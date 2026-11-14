@@ -81,6 +81,7 @@
 - go-develop G0(2026-11-08, code.claude.com 문서)에서 확인한 사실을 그대로 쓴다: Desktop은 CLI와 같은 설정 파일과 프로젝트 스킬을 읽는다. 프로젝트 `permissions.allow`는 신뢰 대화상자를 수락한 뒤에만 적용된다. `Edit(...)`이 쓰기를 포함한다. CLI에는 자동 브라우저 미리보기가 없어 OS 열기 명령을 쓴다.
 - 2026-11-14 17:38 KST: law.go.kr은 11-13 21:00~11-14 21:00 시스템 점검 중이었다(점검 안내에 대체 사이트로 국회 법률정보시스템 안내). 튜터 규칙에 대체 출처를 둔 근거다.
 - 사용자 전역 설정 배제: `claude -p --setting-sources project --strict-mcp-config`로 실행한 세션은 사용자 전역 CLAUDE.md·규칙을 읽지 않았다(2026-11-14 실측, 빈 폴더에서 「불러온 CLAUDE.md·규칙 없음」 응답). G3는 이 옵션으로 돌린다.
+- 2026-11-14 실측(law.go.kr 점검 중): `claude -p`의 WebFetch로 국회 법률정보시스템 본문 주소(`lawsLawtInqyDetl1030.do?genActiontypeCd=2ACT1010&contId=…&contSid=…&basicDt=YYYYMMDD&cachePreid=ALL&viewGb=PROM`)를 읽어 국가계약법 제14조제1항 문장을 원문대로 받았다. 상세 화면 주소는 본문 자리에 「로딩중」만 준다. 긴 법령은 약 4만 자 뒤가 자동 요약돼, 뒷부분 조문은 「없다」고 잘못 요약될 수 있다. `contSid`는 상세 화면의 본문 호출(시행일이 도래한 최근 공포본)에서 얻은 값을 출처 절에 적었다. curl은 브라우저 User-Agent가 없으면 HTTP 400이다.
 - **G1 종료 조건**: law.go.kr 본문을 WebFetch로 읽을 수 있는 URL 형식을 점검 종료 뒤 실측해 이 절과 `tutor/sources.md`에 적는다. 읽을 수 없으면 국회 법률정보시스템 또는 법령 원문 PDF·부처 게시 원문을 1차 경로로 정하고 같은 곳에 적는다. 둘 다 안 되면 R11의 세션 중 재확인은 「확인 못 했다고 말하고 숫자 없이 진행」으로만 충족되므로 디스패처에 보고한다.
 
 ### G4에서 실측할 가설
